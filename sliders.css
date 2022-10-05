@@ -93,38 +93,49 @@ input[type=range]::-moz-range-thumb {
 
 #pressure-input::-moz-range-track {
     background-color: #6096BA;
+    color: #6096BA;
 }
 
 .range.blue::-webkit-slider-thumb {
     border-color: #6096BA;
+    color: #6096BA;
  }
  
  .range.ltpurple::-webkit-slider-thumb {
     border-color: #90798e;
+    color: #90798e;
  }
  
  .range.purple::-webkit-slider-thumb {
     border-color: #be5c63;
+    color: #be5c63;
+
  }
  
  .range.pink::-webkit-slider-thumb {
     border-color: #ef3e36;
+    color: #ef3e36;
  }
  
  .range.blue::-moz-range-thumb {
     border-color: #6096BA;
+    color: #6096BA;
  }
  
  .range.ltpurple::-moz-range-thumb {
     border-color: #90798e;
+    color: #90798e;
+    
  }
  
  .range.purple::-moz-range-thumb {
     border-color: #be5c63;
+    color: #be5c63;
  }
  
  .range.pink::-moz-range-thumb {
     border-color: #ef3e36;
+    color: #ef3e36;
  }
  
  input[type=range]::-webkit-slider-thumb:active {

@@ -106,7 +106,7 @@ body {
 /* main page styles */
 
 .slider-area {
-    width: 30%;
+    width: 40%;
     height: 370px; 
     /* background-color: #000; */
     display: flex;
@@ -123,11 +123,47 @@ body {
 }
 
 .slider-label {
-    width: 42px;
-    height: 42px;
+    width: 90px;
+    height: 90px;
     background-color: gainsboro;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.slider-label label {
+    font-size: 32px;
+    /* color: #242124; */
+    -moz-transition: color 1000ms ease;
+    transition: color 1000ms ease;
+}
+
+.display-slider-values {
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.blue{
+    border-color: #6096BA;
+    color: #6096BA;
+ }
+ 
+ .ltpurple {
+    border-color: #90798e;
+    color: #90798e;
+ }
+ 
+ .purple {
+    border-color: #be5c63;
+    color: #be5c63;
+
+ }
+ 
+ .pink {
+    border-color: #ef3e36;
+    color: #ef3e36;
+ }

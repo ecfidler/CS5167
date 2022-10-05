@@ -45,21 +45,31 @@
             <div class="slider-area">
                 <div class="slider-column">
                     <input type="range" orient="vertical" id="temp-input" class="range blue purple" min="50" max="120" value="85" />
-                    <div class="slider-label">
-                        <label for="temp-input" id="temp-label">85°</label>
-                    </div>
+
                 </div>
                 <div class="slider-column">
                     <input type="range" orient="vertical" id="pressure-input" min="0" max="100" value="50" oninput=updatePressure(this.value) />
-                    <div class="slider-label">
-                        <label for="pressure-input" id="pressure-label">50%</label>
+
+                </div>
+                <div class="slider-column">
+                    <div class="display-slider-values">
+                        <a>Temperature</a>
+                        <div class="slider-label">
+                            <label for="temp-input" id="temp-label" class="blue" >85°</label>
+                        </div>
                     </div>
+                    <div class="display-slider-values">
+                        <a>Water Pressure</a>
+                        <div class="slider-label">
+                            <label for="pressure-input" id="pressure-label">50%</label>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
 
     </div>
-
     <script src="main.js"></script>
 </body>
 </html>
