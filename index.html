@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="sliders.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
 </head>
 
@@ -18,56 +20,71 @@
     </div>
 
     <div class="viewport-window">
-        <div class="top-bar">
-            <div class="top-bar-element" id="real-time">
-                <a class="top-bar-text" >4:30 pm</a>
+        <div class="top">
+            <div class="top-bar">
+                <div class="top-bar-element" id="real-time">
+                    <a class="top-bar-text" >4:30 pm</a>
+                </div>
+                <div class="top-bar-element" id="current-profile">
+                    <a class="top-bar-text">Ethan Fidler</a>
+                </div>
+                <div class="top-bar-element" id="temperature-display">
+                    <a class="top-bar-text">80°</a>
+                </div>
+                <div class="top-bar-element" id="pressure-display">
+                    <a class="top-bar-text">60%</a>
+                </div>
+                <div class="top-bar-element" id="spacer">
+                    <a class="top-bar-text">.</a>
+                </div>
+                <div class="top-bar-element" id="elapsed-time">
+                    <a class="top-bar-text">-00:00</a>
+                </div>
             </div>
-            <div class="top-bar-element" id="current-profile">
-                <a class="top-bar-text">Ethan Fidler</a>
-            </div>
-            <div class="top-bar-element" id="temperature-display">
-                <a class="top-bar-text">80°</a>
-            </div>
-            <div class="top-bar-element" id="pressure-display">
-                <a class="top-bar-text">60%</a>
-            </div>
-            <div class="top-bar-element" id="spacer">
-                <a class="top-bar-text">.</a>
-            </div>
-            <div class="top-bar-element" id="elapsed-time">
-                <a class="top-bar-text">-00:00</a>
+            <div class="progress-bar">
+                <div class="progress-tracking"></div>
             </div>
         </div>
-        <div class="progress-bar">
-            <div class="progress-tracking"></div>
-        </div>
-        <div class="page" id="main-page">
-            <div class="slider-area">
-                <div class="slider-column">
-                    <input type="range" orient="vertical" id="temp-input" class="range blue purple" min="50" max="120" value="85" />
-
-                </div>
-                <div class="slider-column">
-                    <input type="range" orient="vertical" id="pressure-input" min="0" max="100" value="50" oninput=updatePressure(this.value) />
-
-                </div>
-                <div class="slider-column">
-                    <div class="display-slider-values">
-                        <a>Temperature</a>
-                        <div class="slider-label">
-                            <label for="temp-input" id="temp-label" class="blue" >85°</label>
+        <div class="content">
+            <div class="page" id="main-page">
+                <div class="slider-area">
+                    <div class="slider-column">
+                        <input type="range" orient="vertical" id="temp-input" class="range blue" min="50" max="120" value="85" />
+    
+                    </div>
+                    <div class="slider-column">
+                        <input type="range" orient="vertical" id="pressure-input" min="0" max="100" value="50" oninput=updatePressure(this.value) />
+    
+                    </div>
+                    <div class="slider-column">
+                        <div class="display-slider-values">
+                            <a>Temperature</a>
+                            <div class="slider-label">
+                                <label for="temp-input" id="temp-label" class="blue" >85°</label>
+                            </div>
+                        </div>
+                        <div class="display-slider-values">
+                            <a>Water Pressure</a>
+                            <div class="slider-label">
+                                <label for="pressure-input" id="pressure-label">50%</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="display-slider-values">
-                        <a>Water Pressure</a>
-                        <div class="slider-label">
-                            <label for="pressure-input" id="pressure-label">50%</label>
-                        </div>
-                    </div>
                 </div>
+                <div class="apps-area">
+                    <button class="app-button ">🎵</button>
+                    <button class="app-button">👥</button>
+                    <button class="app-button">💦</button>
+                    <button class="app-button">⏳</button>
+                    <button class="app-button">▶️</button>
+
                 </div>
             </div>
+            <div class="page" id="music-page" style="display:none">
+
+            </div>
         </div>
+
 
     </div>
     <script src="main.js"></script>
