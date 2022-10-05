@@ -1,4 +1,22 @@
-body {
+/* 
+
+My Color Pallet
+https://coolors.co/242124-f5f5f5-6096ba-8f754f-ef3e36
+
+
+black: #242124
+white: whitesmoke / #F5F5F5
+off-white: #F3F3F3
+blue: #6096BA
+light-blue: #7FAAC7
+brown: #8F754F
+red: #EF3E36
+
+*/
+
+/* Styles outside of the mock UI */
+
+body { 
     background: gainsboro;
     font-family: Arial, Helvetica, sans-serif;
     margin: 5% 25% 10% 25%
@@ -8,8 +26,108 @@ body {
     color: #242124
 }
 
+/* Styles for the mock UI */
+
 .viewport-window {
     background-color:whitesmoke;
     height: 400px;
     width: 750px;
+}
+
+/* Top bar styles */
+
+.top-bar {
+    width: 100%;
+    height: 25px;
+    background-color: #7FAAC7;
+}
+
+.top-bar-element {
+    display: inline-block;
+    margin: 0 auto;
+    padding-left: 1%;
+    height: 100%;
+}
+
+.top-bar-text {
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+#real-time {
+    width: 10%;
+}
+
+#current-profile {
+    width: 15%
+}
+
+#temperature-display {
+    background-color: #6096BA;
+    width: 7%;
+}
+
+#pressure-display {
+    background-color: #6096BA;
+    width: 8%;
+}
+
+#spacer {
+    width: 42%;
+}
+
+#spacer a {
+    color: #7FAAC7
+}
+
+#elapsed-time {
+    width: 6%
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: #E0E0E0;
+}
+
+.progress-tracking {
+    background-color: #EF3E36;
+    height: 100%;
+    width: 45%;
+}
+
+/* page styles */
+
+.page {
+    height: 370px;
+    width: 100%;
+}
+
+/* main page styles */
+
+.slider-area {
+    width: 30%;
+    height: 370px; 
+    /* background-color: #000; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.slider-column {
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.slider-label {
+    width: 42px;
+    height: 42px;
+    background-color: gainsboro;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
