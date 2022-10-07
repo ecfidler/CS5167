@@ -72,16 +72,34 @@
                     </div>
                 </div>
                 <div class="apps-area">
-                    <button class="app-button ">🎵</button>
+                    <button class="app-button">🎵</button>
                     <button class="app-button">👥</button>
-                    <button class="app-button">💦</button>
+                    <button class="app-button" onclick="showPage('faucet-page')">
+                        <img class="spray-disp" style="width:50px; height: 50px" src="/assets/spray-patterns/shower.png">
+                    </button>
                     <button class="app-button">⏳</button>
                     <button class="app-button">▶️</button>
 
                 </div>
             </div>
-            <div class="page" id="music-page" style="display:none">
+            <div class="page page-hidden" id="music-page">
 
+            </div>
+            <div class="page page-hidden" id="faucet-page" >
+                <div class="spray-pattern-display">
+                    <button class="generic-button back-button" onClick="showPage('main-page')">🔙</button>
+                    <img class="spray-disp" id="spray-pattern-icon" src="/assets/spray-patterns/shower.png">
+                </div>
+                <div class="spray-select-container">
+                    <div class="spray-select-list">
+                            <button class="generic-button spray-select-button" id="jetPatternButton" onClick="setSprayPattern(this)" value="jet">Jet</button>
+                            <button class="generic-button spray-select-button spray-select-button-active" id="showerPatternButton" onClick="setSprayPattern(this)" value="shower">Shower</button>
+                            <button class="generic-button spray-select-button" id="sprayPatternButton" onClick="setSprayPattern(this)" value="spray">Spray</button>
+                            <button class="generic-button spray-select-button" id="mistPatternButton" onClick="setSprayPattern(this)" value="mist">Mist</button>
+                            <button class="generic-button spray-select-button" id="pulsePatternButton" onClick="setSprayPattern(this)" value="pulse">Pulse</button>
+
+                    </div>
+                </div>
             </div>
         </div>
 

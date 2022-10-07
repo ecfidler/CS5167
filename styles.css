@@ -96,11 +96,31 @@ body {
     width: 45%;
 }
 
-/* page styles */
+/* Shared Styles */
+
+.generic-button {
+    border-radius: 4px;
+    border: none;
+    background-color: gainsboro;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.25s;
+}
+
+.back-button {
+    font-size: 1.5em;
+    padding: 5px;
+    margin: 10px 0px 0px 15px;
+}
 
 .page {
     height: 370px;
     width: 100%;
+}
+
+.page-hidden {
+    display: none;
 }
 
 /* main page styles */
@@ -163,13 +183,7 @@ body {
     width: 150px;
     height: 100px;
     border-radius: 4px;
-    border: none;
-    background-color: gainsboro;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-right: 30px;
-    transition-duration: 0.25s;
     font-size: 48px;
 }
 
@@ -197,3 +211,44 @@ body {
     border-color: #ef3e36;
     color: #ef3e36;
 }
+
+/* Spray pattern select page */
+
+.spray-pattern-display {
+    width: 320px;
+    height: 320px;
+    float: left;
+}
+
+#spray-pattern-icon {
+    width: 95%;
+    height: 95%;
+    padding: 2.5%;
+}
+
+.spray-select-container {
+    height: 370px;
+    float: right;
+    width: 45%;
+}
+
+.spray-select-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.spray-select-button {
+    background-color: transparent;
+    border: 2px solid gainsboro;
+    width: 80%;
+    height: 2.5em;
+    font-size: 16px;
+}
+
+.spray-select-button-active {
+    background-color: gainsboro;
+}
+
