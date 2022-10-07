@@ -73,7 +73,7 @@
                 </div>
                 <div class="apps-area">
                     <button class="app-button">🎵</button>
-                    <button class="app-button">👥</button>
+                    <button class="app-button" onclick="showPage('profiles-page')">👥</button>
                     <button class="app-button" onclick="showPage('faucet-page')">
                         <img class="spray-disp" style="width:50px; height: 50px" src="/assets/spray-patterns/shower.png">
                     </button>
@@ -98,6 +98,25 @@
                             <button class="generic-button spray-select-button" id="mistPatternButton" onClick="setSprayPattern(this)" value="mist">Mist</button>
                             <button class="generic-button spray-select-button" id="pulsePatternButton" onClick="setSprayPattern(this)" value="pulse">Pulse</button>
 
+                    </div>
+                </div>
+            </div>
+            <div class="page page-hidden" id="profiles-page">
+                <div class="spray-pattern-display">
+                    <button class="generic-button back-button" onClick="showPage('main-page')">🔙</button>
+                    
+                </div>
+                <div class="spray-select-container">
+                    <div class="select-profile-list">
+                        <button class="generic-button profile-select-button" id="jetPatternButton" >Jet</button>
+                        <button class="generic-button profile-select-button" id="showerPatternButton">Shower</button>
+                        <button class="generic-button profile-select-button" id="sprayPatternButton">Spray</button>
+                        <button class="generic-button profile-select-button" id="mistPatternButton">Mist</button>
+                        <button class="generic-button profile-select-button" id="pulsePatternButton">Pulse</button>
+                    </div>
+                    <div class="select-profile-list" style="height:15%">
+                        <button class="generic-button profile-select-button"></button>
+                        <button class="generic-button profile-select-button"></button>
                     </div>
                 </div>
             </div>

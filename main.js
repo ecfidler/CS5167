@@ -9,7 +9,7 @@ let buttonIDs = [
     "pulsePatternButton",
 ];
 
-let pageIds = ["main-page", "music-page", "faucet-page"];
+let pageIds = ["main-page", "music-page", "faucet-page", "profiles-page"];
 
 // MAIN DATA (will be refactored into a data structure)
 
