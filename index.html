@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="content">
-            <div class="page" id="main-page">
+            <div class="page page-hidden" id="main-page">
                 <div class="slider-area">
                     <div class="slider-column">
                         <input type="range" orient="vertical" id="temp-input" class="range blue" min="50" max="120" value="85" />
@@ -101,18 +101,39 @@
                     </div>
                 </div>
             </div>
-            <div class="page page-hidden" id="profiles-page">
+            <div class="page" id="profiles-page">
                 <div class="spray-pattern-display">
                     <button class="generic-button back-button" onClick="showPage('main-page')">🔙</button>
+                    <div class="profileForm">
+                        <input type="text" id="profileNameInput" value="Ethan Fidler">
+                        <label for="profileTemperatureInput">Temperature</label>
+                        <input type="range" orient="vertical" id="profileTemperatureInput" class="range blue" min="50" max="120" value="85" />
+                        <output for="profileTemperatureInput"></output>
+                        <label for="profilePressureInput">Pressure</label>
+                        <input type="range" orient="vertical" id="profilePressureinput" min="0" max="100" value="50" />
+                        <output for="profilePressureInput"></output>
+                        <label for="selectSprayPattern">Select Default Spray Pattern</label>
+                        <select id="selectSprayPattern">
+                            <option value="jet">Jet</option>
+                            <option value="shower">Shower</option>
+                            <option value="spray">Spray</option>
+                            <option value="mist">Mist</option>
+                            <option value="pulse">Pulse</option>
+                        </select>
+                        <input type="time" id="timeInput" name="time" min="0:01" max="0:30">
+
+                        
+                    </div>
                     
                 </div>
                 <div class="spray-select-container">
+                    <h3>Select Profile or Action</h3>
                     <div class="select-profile-list">
-                        <button class="generic-button profile-select-button" id="jetPatternButton" >Jet</button>
-                        <button class="generic-button profile-select-button" id="showerPatternButton">Shower</button>
-                        <button class="generic-button profile-select-button" id="sprayPatternButton">Spray</button>
-                        <button class="generic-button profile-select-button" id="mistPatternButton">Mist</button>
-                        <button class="generic-button profile-select-button" id="pulsePatternButton">Pulse</button>
+                        <button class="generic-button profile-select-button">Ethan Fidler</button>
+                        <button class="generic-button profile-select-button">Ethan 2</button>
+                        <button class="generic-button profile-select-button">Hot</button>
+                        <button class="generic-button profile-select-button">Cold</button>
+                        <button class="generic-button profile-select-button">Quick</button>
                     </div>
                     <div class="select-profile-list" style="height:15%">
                         <button class="generic-button profile-select-button"> New (+)</button>
