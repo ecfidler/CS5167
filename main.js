@@ -35,13 +35,51 @@ let profiles = [
     },
 ];
 
-// MAIN DATA (will be refactored into a data structure)
+// MAIN DATA
+
+let ticker = 0;
 
 let temperatureValue = 85;
 let pressureValue = 50;
 let sprayPatternValue = "shower";
 let activeProfile = "Ethan";
-let timeRemaining = "0";
+let timeRemaining = 59;
+
+// Main loop to update the main bar
+
+window.setInterval(function () {
+    // update values
+    document.getElementById(
+        "temperatureTopDisp"
+    ).innerText = `${temperatureValue}°`;
+
+    document.getElementById("pressureTopDisp").innerText = `${pressureValue}%`;
+
+    document.getElementById("currentProfileTopDisp").innerText = activeProfile;
+
+    // update clock
+    let time = new Date();
+    time = time.toLocaleString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+    });
+
+    document.getElementById("realTimeTopDisp").innerText = time;
+
+    // update timer
+    let mins = Math.floor(timeRemaining / 60);
+    let seconds = timeRemaining - mins * 60;
+
+    let timeString = `-${mins}:${seconds}`;
+
+    if (ticker) {
+        timeString = `-${mins} ${seconds}`;
+    }
+    ticker = 1 - ticker;
+
+    document.getElementById("timeRemainingTopDisp").innerText = timeString;
+}, 1000); // every second
 
 // move gradient on main page slider
 temperatureInput.addEventListener("input", function () {
@@ -153,21 +191,19 @@ function getInputValues() {
 
     let sprayPattern = document.getElementById("selectSprayPattern").value;
 
-    let timeTemp =
-        document.getElementById("timeMinutesInput").value * 60 +
-        document.getElementById("timeSecondsInput").value;
-
-    let totalLength = 0;
-    if (timeTemp) {
-        let totalLength = timeTemp;
-    }
+    let mins = document.getElementById("timeMinutesInput").value;
+    let seconds = document.getElementById("timeSecondsInput").value;
+    console.log(mins);
+    console.log(seconds);
+    let timeTemp = Number(mins) * 60 + Number(seconds);
+    console.log(timeTemp);
 
     return {
         name: name,
         temperature: temperature,
         pressure: pressure,
         sprayPattern: sprayPattern,
-        totalLength: totalLength,
+        totalLength: timeTemp,
     };
 }
 
@@ -195,7 +231,8 @@ function setInputValues(profileObject) {
 
 function setGlobalValues(profileData) {
     activeProfile = profileData.name;
-    timeRemaining = profileData.timeRemaining;
+    console.log(profileData);
+    timeRemaining = profileData.totalLength;
     temperatureValue = profileData.temperature;
     pressureValue = profileData.pressure;
     sprayPatternValue = profileData.sprayPattern;

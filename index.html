@@ -23,22 +23,22 @@
         <div class="top">
             <div class="top-bar">
                 <div class="top-bar-element" id="real-time">
-                    <a class="top-bar-text" >4:30 pm</a>
+                    <a class="top-bar-text" id="realTimeTopDisp">4:30 pm</a>
                 </div>
                 <div class="top-bar-element" id="current-profile">
-                    <a class="top-bar-text">Ethan Fidler</a>
+                    <a class="top-bar-text" id="currentProfileTopDisp">Ethan Fidler</a>
                 </div>
                 <div class="top-bar-element" id="temperature-display">
-                    <a class="top-bar-text">80°</a>
+                    <a class="top-bar-text" id="temperatureTopDisp">80°</a>
                 </div>
                 <div class="top-bar-element" id="pressure-display">
-                    <a class="top-bar-text">60%</a>
+                    <a class="top-bar-text" id="pressureTopDisp">60%</a>
                 </div>
                 <div class="top-bar-element" id="spacer">
                     <a class="top-bar-text">.</a>
                 </div>
                 <div class="top-bar-element" id="elapsed-time">
-                    <a class="top-bar-text">-00:00</a>
+                    <a class="top-bar-text" id="timeRemainingTopDisp">-00:00</a>
                 </div>
             </div>
             <div class="progress-bar">
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="content">
-            <div class="page page-hidden" id="main-page">
+            <div class="page" id="main-page">
                 <div class="slider-area">
                     <div class="slider-column">
                         <input type="range" orient="vertical" id="temp-input" class="range blue" min="50" max="120" value="85" />
@@ -101,7 +101,7 @@
                     </div>
                 </div>
             </div>
-            <div class="page" id="profiles-page">
+            <div class="page page-hidden" id="profiles-page">
                 <div class="spray-pattern-display">
                     <div class="profile-form">
                         <div style="display: flex; justify-content: flex-start; align-items: flex-end;">
@@ -155,8 +155,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
     <script src="main.js"></script>
 </body>

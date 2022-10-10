@@ -15,3 +15,4 @@ projects for CS5167 - User Interfaces I
 -   add music page
 -   add timer page
     -   prompt when 1 minute remains (add this to the timeout loop)
+    -   progress bar
