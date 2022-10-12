@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="sliders.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
 </head>
 
 <body onload="loadProfiles()">
@@ -20,6 +19,9 @@
     </div>
 
     <div class="viewport-window">
+        <div class="alert" id="thirtySecAlert" onclick="clearAlert(this)">
+            30 Seconds remaining! (tap to clear)
+        </div> 
         <div class="top">
             <div class="top-bar">
                 <div class="top-bar-element" id="real-time">
@@ -42,7 +44,7 @@
                 </div>
             </div>
             <div class="progress-bar">
-                <div class="progress-tracking"></div>
+                <div id="progressTracking"></div>
             </div>
         </div>
         <div class="content">
@@ -77,8 +79,8 @@
                     <button class="app-button" onclick="showPage('faucet-page')">
                         <img class="spray-disp" style="width:50px; height: 50px" src="/assets/spray-patterns/shower.png">
                     </button>
-                    <button class="app-button">⏳</button>
-                    <button class="app-button">▶️</button>
+                    <button class="app-button" onclick="showPage('time-page')">⏳</button>
+                    <button class="app-button" id="showerToggleButton" onclick="pausePlayWater(this)">▶️</button>
 
                 </div>
             </div>
@@ -153,6 +155,9 @@
                         <button class="generic-button profile-select-button" onClick="saveProfile()">Save (💾)</button>
                     </div>
                 </div>
+            </div>
+            <div class="page page-hidden" id="time-page">
+                <button class="generic-button back-button" onClick="showPage('main-page')">🔙</button>
             </div>
         </div>
     </div>

@@ -6,13 +6,11 @@ projects for CS5167 - User Interfaces I
 
 ### prio
 
--   make top bar work
-    -   timeout loop to update
--   stop/start button functionality
 
 ### stretch
 
+-   make the shower play audio if it's running
 -   add music page
 -   add timer page
-    -   prompt when 1 minute remains (add this to the timeout loop)
-    -   progress bar
+    -   add button to allow shower to be timed or not
+

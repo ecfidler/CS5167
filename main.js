@@ -9,7 +9,7 @@ let buttonIDs = [
     "pulsePatternButton",
 ];
 
-let pageIds = ["main-page", "music-page", "faucet-page", "profiles-page"];
+let pageIds = ["main-page", "music-page", "faucet-page", "profiles-page", "time-page", "music-page"];
 
 let profiles = [
     {
@@ -37,17 +37,29 @@ let profiles = [
 
 // MAIN DATA
 
-let ticker = 0;
+let ticker = 0; // flips between 0 and 1 every second
+let running = false;
+let alertShown = false;
+
+let timedShower = true;
 
 let temperatureValue = 85;
 let pressureValue = 50;
 let sprayPatternValue = "shower";
 let activeProfile = "Ethan";
-let timeRemaining = 59;
+let timeRemaining = 32;
+let initialTime = timeRemaining;
+let progress = 0;
 
 // Main loop to update the main bar
 
 window.setInterval(function () {
+
+    // RUN THE UPDATE TIME FUNCTION HERE
+    if (running) {
+        timerSecond();
+    }
+
     // update values
     document.getElementById(
         "temperatureTopDisp"
@@ -73,12 +85,22 @@ window.setInterval(function () {
 
     let timeString = `-${mins}:${seconds}`;
 
+    if (seconds < 10) {
+        seconds = `0${seconds}`;
+    }
+    
+    timeString = `-${mins}:${seconds}`;
+
     if (ticker) {
         timeString = `-${mins} ${seconds}`;
     }
     ticker = 1 - ticker;
 
     document.getElementById("timeRemainingTopDisp").innerText = timeString;
+
+    // update progress bar
+    progressBar();
+
 }, 1000); // every second
 
 // move gradient on main page slider
@@ -233,6 +255,9 @@ function setGlobalValues(profileData) {
     activeProfile = profileData.name;
     console.log(profileData);
     timeRemaining = profileData.totalLength;
+    initialTime = timeRemaining;
+    progress = 0;
+    progressBar();
     temperatureValue = profileData.temperature;
     pressureValue = profileData.pressure;
     sprayPatternValue = profileData.sprayPattern;
@@ -280,4 +305,48 @@ function saveProfile() {
         profiles.push(newData);
         addProfileButton(newData);
     }
+}
+
+// functions for the timer
+
+function pausePlayWater(button=None) {
+    running = !running;
+
+    if (button) {
+        button.innerText = running?"⏸️":"▶️";
+    }
+}
+
+function timerSecond() {
+
+    if (timeRemaining > 0) {
+        timeRemaining -= 1;
+        console.log(timeRemaining);
+    }
+
+    if (timeRemaining <= 0) {
+        if (timedShower) {
+            pausePlayWater(document.getElementById("showerToggleButton"));
+        }
+    } 
+
+    if (timeRemaining == 30) {
+        showThirtySecAlert();
+    }
+
+}
+
+function showThirtySecAlert() {
+    let alert = document.getElementById('thirtySecAlert');
+    alert.classList.add('show');
+}
+
+function clearAlert(alert) {
+    alert.classList.remove('show');
+}
+
+function progressBar() {
+    progress = 1 - (timeRemaining/initialTime);
+    let bar = document.getElementById('progressTracking');
+    bar.style.width = `${progress*100}%`;
 }

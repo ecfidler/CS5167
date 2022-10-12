@@ -19,7 +19,11 @@ red: #EF3E36
 body { 
     background: gainsboro;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 5% 25% 10% 25%
+    margin: 5% 25% 10% 25%;
+    background-image: url(./assets/tilewallalt.jpg);
+    overflow: hidden;
+    /* background-blend-mode:color-dodge; */
+    /* filter: grayscale(75%); */
 }
 
 .title-area {
@@ -29,9 +33,11 @@ body {
 /* Styles for the mock UI */
 
 .viewport-window {
+    position: relative;
     background-color:whitesmoke;
     height: 400px;
     width: 750px;
+    box-shadow: 4px 4px 16px;
 }
 
 /* Top bar styles */
@@ -90,10 +96,54 @@ body {
     background-color: #E0E0E0;
 }
 
-.progress-tracking {
+#progressTracking {
     background-color: #EF3E36;
     height: 100%;
     width: 45%;
+}
+
+/* snackbar/alert styles */
+
+.alert.show {
+    visibility: visible;
+    animation: fadein 0.25s;
+}
+
+.alert {
+    position: absolute;
+    visibility: hidden;
+    padding: 0.25em;
+    font-size: 1.5em;
+    border-radius: 0.25em;
+    z-index: 2;
+    left: 0.25em;
+    top: 0.25em;
+    cursor: pointer;
+}
+
+@keyframes fadein {
+    0% {
+        top: 0; 
+        opacity: 0;
+    }
+    100% {
+        top: 0.25em; 
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#thirtySecAlert {
+    color: #F3F3F3;
+    background-color: #EF3E36;
 }
 
 /* Shared Styles */
@@ -106,6 +156,7 @@ body {
     align-items: center;
     justify-content: center;
     transition-duration: 0.25s;
+    cursor: pointer;
 }
 
 .back-button {
