@@ -9,7 +9,14 @@ let buttonIDs = [
     "pulsePatternButton",
 ];
 
-let pageIds = ["main-page", "music-page", "faucet-page", "profiles-page", "time-page", "music-page"];
+let pageIds = [
+    "main-page",
+    "music-page",
+    "faucet-page",
+    "profiles-page",
+    "time-page",
+    "music-page",
+];
 
 let profiles = [
     {
@@ -54,7 +61,6 @@ let progress = 0;
 // Main loop to update the main bar
 
 window.setInterval(function () {
-
     // RUN THE UPDATE TIME FUNCTION HERE
     if (running) {
         timerSecond();
@@ -88,7 +94,7 @@ window.setInterval(function () {
     if (seconds < 10) {
         seconds = `0${seconds}`;
     }
-    
+
     timeString = `-${mins}:${seconds}`;
 
     if (ticker) {
@@ -100,7 +106,6 @@ window.setInterval(function () {
 
     // update progress bar
     progressBar();
-
 }, 1000); // every second
 
 // move gradient on main page slider
@@ -309,16 +314,15 @@ function saveProfile() {
 
 // functions for the timer
 
-function pausePlayWater(button=None) {
+function pausePlayWater(button = None) {
     running = !running;
 
     if (button) {
-        button.innerText = running?"⏸️":"▶️";
+        button.innerText = running ? "⏸️" : "▶️";
     }
 }
 
 function timerSecond() {
-
     if (timeRemaining > 0) {
         timeRemaining -= 1;
         console.log(timeRemaining);
@@ -328,25 +332,31 @@ function timerSecond() {
         if (timedShower) {
             pausePlayWater(document.getElementById("showerToggleButton"));
         }
-    } 
+    }
 
     if (timeRemaining == 30) {
         showThirtySecAlert();
     }
-
 }
 
 function showThirtySecAlert() {
-    let alert = document.getElementById('thirtySecAlert');
-    alert.classList.add('show');
+    let alert = document.getElementById("thirtySecAlert");
+    alert.classList.add("show");
 }
 
-function clearAlert(alert) {
-    alert.classList.remove('show');
+function clearAlert() {
+    let alert = document.getElementById("thirtySecAlert");
+    alert.classList.remove("show");
+}
+
+function addThirtyButton() {
+    initialTime += 30;
+    timeRemaining += 30;
+    clearAlert();
 }
 
 function progressBar() {
-    progress = 1 - (timeRemaining/initialTime);
-    let bar = document.getElementById('progressTracking');
-    bar.style.width = `${progress*100}%`;
+    progress = 1 - timeRemaining / initialTime;
+    let bar = document.getElementById("progressTracking");
+    bar.style.width = `${progress * 100}%`;
 }

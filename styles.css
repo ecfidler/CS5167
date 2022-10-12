@@ -106,6 +106,7 @@ body {
 
 .alert.show {
     visibility: visible;
+    /* transition: visibility 0.25s linear; */
     animation: fadein 0.25s;
 }
 
@@ -118,7 +119,18 @@ body {
     z-index: 2;
     left: 0.25em;
     top: 0.25em;
-    cursor: pointer;
+    box-shadow: 2px 2px 24px #555;
+}
+
+.alert button {
+    background-color: #F36F68;
+    display: inline; 
+    font-size: 1em;
+    color: inherit;
+}
+
+.alert button:active {
+    box-shadow: 2px inset white;
 }
 
 @keyframes fadein {
@@ -128,15 +140,6 @@ body {
     }
     100% {
         top: 0.25em; 
-        opacity: 1;
-    }
-}
-
-@keyframes fadeout {
-    0% {
-        opacity: 0;
-    }
-    100% {
         opacity: 1;
     }
 }
