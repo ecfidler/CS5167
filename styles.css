@@ -105,14 +105,14 @@ body {
 /* snackbar/alert styles */
 
 .alert.show {
-    visibility: visible;
-    /* transition: visibility 0.25s linear; */
-    animation: fadein 0.25s;
+    display: block;
+    animation: fadein 0.25s forwards;
+    opacity: 0;
 }
 
 .alert {
     position: absolute;
-    visibility: hidden;
+    display: none;
     padding: 0.25em;
     font-size: 1.5em;
     border-radius: 0.25em;
@@ -347,4 +347,53 @@ body {
 
 .num-input {
     width: 4em;
+}
+
+/* Music Page */
+
+#musicCover {
+    height: 250px;
+    width: 250px;
+    box-shadow: none;
+}
+
+#musicCover.playing {
+    box-shadow: 4px 4px 8px;
+    opacity: 1;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.cover-area {
+    width: 40%;
+    padding: 2.5%;
+    float: left;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* justify-content: center; */
+}
+
+.player-area {
+    float:left;
+    width: 80%;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+}
+
+.play-time-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.player-button {
+    font-size: 2em;
+    padding: 4px;
+    margin-left: 1em;
+    margin-right: 0.25em;
+}
+
+#musicTime {
+    font-size: 2em;
 }

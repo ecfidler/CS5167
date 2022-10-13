@@ -49,6 +49,7 @@ let running = false;
 let alertShown = false;
 
 let timedShower = true;
+let musicPlaying = false;
 
 let temperatureValue = 85;
 let pressureValue = 50;
@@ -106,6 +107,12 @@ window.setInterval(function () {
 
     // update progress bar
     progressBar();
+
+    // update music time
+    let audio = document.getElementById("musicPlayer");
+    document.getElementById("musicTime").innerHTML = `${s_to_mmss(
+        audio.currentTime
+    )}/${s_to_mmss(audio.duration)}`;
 }, 1000); // every second
 
 // move gradient on main page slider
@@ -182,7 +189,9 @@ function inputQuickOutput(el, unit) {
 
 // Handling the loading and updating of profiles
 
-function loadProfiles() {
+function load() {
+    temperatureInput.dispatchEvent(new Event("input"));
+    document.getElementById("musicPlayer").volume = 0.5;
     // profileNameInput
     console.log("loading profiles...");
     profiles.forEach((profile) => {
@@ -359,4 +368,33 @@ function progressBar() {
     progress = 1 - timeRemaining / initialTime;
     let bar = document.getElementById("progressTracking");
     bar.style.width = `${progress * 100}%`;
+}
+
+// music player
+
+function playPauseMusic() {
+    let button = document.getElementById("playPauseMusicButton");
+    let player = document.getElementById("musicPlayer");
+    let cover = document.getElementById("musicCover");
+
+    if (musicPlaying) {
+        player.pause();
+        button.innerText = "▶️";
+        cover.classList.remove("playing");
+    } else {
+        player.play();
+        button.innerText = "⏸️";
+        cover.classList.add("playing");
+    }
+    musicPlaying = !musicPlaying;
+}
+
+function s_to_mmss(seconds) {
+    let mins = Math.floor(seconds / 60);
+    let secs = Math.floor(seconds - mins * 60);
+    if (secs < 10) {
+        secs = `0${secs}`;
+    }
+
+    return `${mins}:${secs}`;
 }

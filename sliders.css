@@ -5,6 +5,10 @@
     border-radius: 7px;
 }
 
+.quick-slider::-moz-range-track {
+    width: 100px;
+}
+
 input[type=range][orient=vertical]
 {
     writing-mode: bt-lr;
@@ -44,7 +48,7 @@ input[type=range]::-moz-range-track {
     /* background: rgb(0,0,255);
     background: linear-gradient(0deg, #6096BA 0%, #EF3E36 100%); */
     width: 15px;
-    border: 2px solid slategray;
+    /* border: 2px solid slategray; */
     border-radius: 7px;
 }
   

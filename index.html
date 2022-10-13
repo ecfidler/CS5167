@@ -12,7 +12,7 @@
 
 </head>
 
-<body onload="loadProfiles()">
+<body onload="load()">
     <div class="title-area">
         <h1>Project 1: Smart Shower</h1>
         <h3>Ethan Fidler</h3>
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="apps-area">
-                    <button class="app-button">🎵</button>
+                    <button class="app-button" onclick="showPage('music-page')">🎵</button>
                     <button class="app-button" onclick="showPage('profiles-page')">👥</button>
                     <button class="app-button" onclick="showPage('faucet-page')">
                         <img class="spray-disp" style="width:50px; height: 50px" src="/assets/spray-patterns/shower.png">
@@ -85,7 +85,22 @@
                 </div>
             </div>
             <div class="page page-hidden" id="music-page">
-
+                <button class="generic-button back-button" onClick="showPage('main-page')" style="position:relative">🔙</button>
+                <div class="player-area">
+                    <div class="cover-area">
+                        <img id="musicCover" class="" src="./assets/albumcover.jpg">
+                        <div>
+                            <div class="play-time-area">
+                                <button class="player-button generic-button" id="playPauseMusicButton" onclick="playPauseMusic()">▶️</button> 
+                                <div id="musicTime">0:00/#:##</div>
+                            </div>
+                            <input type="range" min='0' max="1" step="0.05" value="0.3" class="quick-slider" onchange="document.getElementById('musicPlayer').volume = this.value">
+                        </div>
+                    </div>
+                    <audio id="musicPlayer">
+                        <source src="./assets/audio/song.mp3" type="audio/mpeg" >
+                    </audio>
+                </div>
             </div>
             <div class="page page-hidden" id="faucet-page" >
                 <div class="spray-pattern-display">
