@@ -21,12 +21,34 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 5% 25% 10% 25%;
     background-image: url(./assets/tilewallalt.jpg);
-    overflow: hidden;
+    /* overflow: hidden; */
     /* background-blend-mode:color-dodge; */
     /* filter: grayscale(75%); */
 }
 
 .title-area {
+    color: #242124;
+    background-color: #F3F3F3;
+    padding: 0.5em 1em 0.5em 1em;
+    width: 744px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 16px;
+}
+
+.bottom-area {
+    margin-top: 25px;
+}
+
+.bottom-button {
+    padding: 5px;
+    width: 8em;
+}
+
+.bottom-button:hover {
+    box-shadow: 2px 2px 12px;
+}
+
+.title-area a {
     color: #242124
 }
 
@@ -149,6 +171,15 @@ body {
     background-color: #EF3E36;
 }
 
+#waterUseAlert {
+    color: #F3F3F3;
+    background-color: #6096BA
+}
+
+#waterUseAlert button {
+    background-color: #7FAAC7;
+}
+
 /* Shared Styles */
 
 .generic-button {
@@ -160,6 +191,10 @@ body {
     justify-content: center;
     transition-duration: 0.25s;
     cursor: pointer;
+}
+
+.generic-button:focus {
+    box-shadow: 3px 3px 10px inset rgba(0, 0, 0, 0.3);
 }
 
 .back-button {
@@ -242,6 +277,10 @@ body {
 }
 
 .app-button:hover {
+    box-shadow: 3px 3px 10px inset rgba(0, 0, 0, 0.3);
+}
+
+.app-button:focus {
     box-shadow: 3px 3px 10px inset rgba(0, 0, 0, 0.3);
 }
 
@@ -363,26 +402,41 @@ body {
     transition: box-shadow 0.5s ease-in-out;
 }
 
+#musicTime {
+    padding-right: 5px;
+}
+
 .player-progress {
     background-color: #E0E0E0;
     width: 100%;
     height: 5px;
+    min-width: 65%;
 }
 
 #playerProgressBar {
     width: 0%;
     height: 100%;
     background-color: #EF3E36;
+    border-right: 2px solid grey;
 }
 
 .cover-area {
     /* margin-top: 15px; */
     margin-left: 25px;
-    height: 320px;
+    height: 370px;
     width: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
+}
+
+.volume-area {
+    display: flex; 
+    flex-direction: column; 
+    font-size: 1.25em;
+    padding-bottom: 100px;
+    margin-left: 10px;
+    /* bottom: 5%; */
 }
 
 .player-area {
@@ -392,7 +446,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .play-time-area {
@@ -403,7 +457,7 @@ body {
 }
 
 .player-button {
-    font-size: 2em;
+    font-size: 1.25em;
     padding: 4px;
     margin-left: 1em;
     margin-right: 0.25em;
@@ -411,4 +465,9 @@ body {
 
 #musicTime {
     font-size: 1.25em;
+}
+
+/* responsiveness */
+@media only screen and (max-width: 1010px) {
+    body { margin: 5% 5% 10% 5% }
 }

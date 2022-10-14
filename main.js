@@ -46,6 +46,13 @@ let profiles = [
         sprayPattern: "jet",
         totalLength: 120,
     },
+    {
+        name: "Simulation",
+        temperature: 85,
+        pressure: 50,
+        sprayPattern: "shower",
+        totalLength: 120,
+    },
 ];
 
 // MAIN DATA
@@ -60,10 +67,12 @@ let musicPlaying = false;
 let temperatureValue = 85;
 let pressureValue = 50;
 let sprayPatternValue = "shower";
-let activeProfile = "Ethan";
+let activeProfile = "User";
 let timeRemaining = 32;
 let initialTime = timeRemaining;
 let progress = 0;
+
+let waterUsed = 0;
 
 // Main loop to update the main bar
 
@@ -71,6 +80,8 @@ window.setInterval(function () {
     // RUN THE UPDATE TIME FUNCTION HERE
     if (running) {
         timerSecond();
+
+        waterUsed += 132 * (pressureValue / 100);
     }
 
     // update values
@@ -115,12 +126,14 @@ window.setInterval(function () {
     progressBar();
 
     // update music time
-    let audio = document.getElementById("musicPlayer");
-    document.getElementById("musicTime").innerHTML = `${s_to_mmss(
-        audio.currentTime
-    )}/${s_to_mmss(audio.duration)}`;
-    musicProgressBar();
 
+    if (musicPlaying) {
+        let audio = document.getElementById("musicPlayer");
+        document.getElementById("musicTime").innerHTML = `${s_to_mmss(
+            audio.currentTime
+        )}/${s_to_mmss(audio.duration)}`;
+        musicProgressBar();
+    }
 }, 1000); // every second
 
 // move gradient on main page slider
@@ -200,6 +213,9 @@ function inputQuickOutput(el, unit) {
 function load() {
     temperatureInput.dispatchEvent(new Event("input"));
     document.getElementById("musicPlayer").volume = 0.5;
+
+    waterUsed = 0;
+
     // profileNameInput
     console.log("loading profiles...");
     profiles.forEach((profile) => {
@@ -280,6 +296,7 @@ function setGlobalValues(profileData) {
     initialTime = timeRemaining;
     progress = 0;
     progressBar();
+    waterUsed = 0;
     temperatureValue = profileData.temperature;
     pressureValue = profileData.pressure;
     sprayPatternValue = profileData.sprayPattern;
@@ -300,8 +317,6 @@ function updateValues() {
     setSprayPattern(
         document.getElementById(`${sprayPatternValue}PatternButton`)
     );
-
-    // the top bar will update automatically every second (profile and time remaining)
 }
 
 function newProfile() {
@@ -348,6 +363,8 @@ function timerSecond() {
     if (timeRemaining <= 0) {
         if (timedShower) {
             pausePlayWater(document.getElementById("showerToggleButton"));
+            showWaterUseAlert();
+            clearAlert("thirtySecAlert");
         }
     }
 
@@ -361,8 +378,17 @@ function showThirtySecAlert() {
     alert.classList.add("show");
 }
 
-function clearAlert() {
-    let alert = document.getElementById("thirtySecAlert");
+function showWaterUseAlert() {
+    let alert = document.getElementById("waterUseAlert");
+    document.getElementById("waterUseText").innerText = `You used ${
+        waterUsed / 1000
+    }L of water`;
+    alert.classList.add("show");
+    waterUsed = 0;
+}
+
+function clearAlert(id) {
+    let alert = document.getElementById(id);
     alert.classList.remove("show");
 }
 
@@ -381,7 +407,7 @@ function progressBar() {
 function musicProgressBar() {
     let musicProgress = document.getElementById("playerProgressBar");
     let audio = document.getElementById("musicPlayer");
-    let percentage = audio.currentTime/audio.duration;
+    let percentage = audio.currentTime / audio.duration;
     musicProgress.style.width = `${percentage * 100}%`;
 }
 
@@ -412,4 +438,104 @@ function s_to_mmss(seconds) {
     }
 
     return `${mins}:${secs}`;
+}
+
+function musicBack() {
+    let player = document.getElementById("musicPlayer");
+    player.currentTime = 0;
+    if (musicPlaying) {
+        player.pause();
+        button.innerText = "▶️";
+        cover.classList.remove("playing");
+    }
+}
+
+// run simulation
+
+function runSim() {
+    document.getElementById("runSimButton").innerText = "Running...";
+
+    Promise.resolve()
+        .then(() => showPage("main-page"))
+        .then(() => delay(1000))
+        .then(() => pressButtonAction("showProfilesPageButton")) // open the profiles page
+        .then(() => delay(2500))
+        .then(() => selectProfileAction()) // select the profile
+        .then(() => delay(1000))
+        .then(() => pressButtonAction("activateProfileButton")) // set the profile active
+        .then(() => delay(1000))
+        .then(() => showPage("main-page"))
+        .then(() => delay(1000))
+        .then(() => pressButtonAction("showerToggleButton")) // turn on shower
+        .then(() => delay(2000))
+        .then(() => changeTemperatureAction(95)) // change the temperature
+        .then(() => delay(1000))
+        .then(() => pressButtonAction("showMusicPageButton")) // open the music page
+        .then(() => delay(2000))
+        .then(() => pressButtonAction("playPauseMusicButton"))
+        .then(() => delay(5000))
+        .then(() => showPage("main-page"))
+        .then(() => delay(30000)) // 30000
+        .then(() => pressButtonAction("showFaucetPageButton")) // open the faucet page
+        .then(() => delay(5000))
+        .then(() => pressButtonAction("mistPatternButton"))
+        .then(() => delay(5000))
+        .then(() => showPage("main-page"))
+        .then(() => delay(45000))
+        .then(() => pressButtonAction("thirtySecAlertClearButton"))
+        .then(() => delay(28000))
+        .then(() => pressButtonAction("waterUseAlertClearButton"))
+        .then(() => delay(2000))
+        .then(() => pressButtonAction("showMusicPageButton")) // open the music page
+        .then(() => delay(2000))
+        .then(() => pressButtonAction("playPauseMusicButton"))
+        .then(() => delay(2000))
+        .then(() => showPage("main-page"))
+        .then(() => resetRunButton());
+}
+
+function delay(duration) {
+    // retrived from https://stackoverflow.com/a/62034951/12470778
+    return new Promise((resolve) => {
+        setTimeout(resolve, duration);
+    });
+}
+
+function pressButtonAction(id) {
+    button = document.getElementById(id);
+    button.focus();
+
+    setTimeout(() => {
+        button.click();
+    }, 1000);
+}
+
+function pressButtonElementAction(el) {
+    el.focus();
+    setTimeout(() => {
+        el.click();
+    }, 1000);
+}
+
+function changeTemperatureAction(temperature) {
+    let tempInput = document.getElementById("temp-input");
+
+    tempInput.value = temperature;
+    tempInput.dispatchEvent(new Event("input"));
+}
+
+function selectProfileAction() {
+    let buttons = document.getElementById("profilesList").children;
+
+    console.log(buttons);
+    for (let i = 0; i < buttons.length; i++) {
+        if (buttons[i].innerText == "Simulation") {
+            console.log("foundButton");
+            pressButtonElementAction(buttons[i]);
+        }
+    }
+}
+
+function resetRunButton() {
+    document.getElementById("runSimButton").innerText = "Run simulation";
 }
