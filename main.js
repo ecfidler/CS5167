@@ -14,7 +14,6 @@ let pageIds = [
     "music-page",
     "faucet-page",
     "profiles-page",
-    "time-page",
     "music-page",
 ];
 
@@ -39,6 +38,13 @@ let profiles = [
         pressure: 30,
         sprayPattern: "shower",
         totalLength: 300,
+    },
+    {
+        name: "Presentation",
+        temperature: 99,
+        pressure: 45,
+        sprayPattern: "jet",
+        totalLength: 120,
     },
 ];
 
@@ -113,6 +119,8 @@ window.setInterval(function () {
     document.getElementById("musicTime").innerHTML = `${s_to_mmss(
         audio.currentTime
     )}/${s_to_mmss(audio.duration)}`;
+    musicProgressBar();
+
 }, 1000); // every second
 
 // move gradient on main page slider
@@ -368,6 +376,13 @@ function progressBar() {
     progress = 1 - timeRemaining / initialTime;
     let bar = document.getElementById("progressTracking");
     bar.style.width = `${progress * 100}%`;
+}
+
+function musicProgressBar() {
+    let musicProgress = document.getElementById("playerProgressBar");
+    let audio = document.getElementById("musicPlayer");
+    let percentage = audio.currentTime/audio.duration;
+    musicProgress.style.width = `${percentage * 100}%`;
 }
 
 // music player
