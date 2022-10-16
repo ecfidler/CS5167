@@ -380,9 +380,10 @@ function showThirtySecAlert() {
 
 function showWaterUseAlert() {
     let alert = document.getElementById("waterUseAlert");
-    document.getElementById("waterUseText").innerText = `You used ${
-        waterUsed / 1000
-    }L of water`;
+    let used = Math.round(waterUsed / 10) / 100;
+    document.getElementById(
+        "waterUseText"
+    ).innerText = `You used ${used}L of water`;
     alert.classList.add("show");
     waterUsed = 0;
 }
@@ -442,6 +443,7 @@ function s_to_mmss(seconds) {
 
 function musicBack() {
     let player = document.getElementById("musicPlayer");
+    let button = document.getElementById("playPauseMusicButton");
     player.currentTime = 0;
     if (musicPlaying) {
         player.pause();
