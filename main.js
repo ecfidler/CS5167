@@ -200,7 +200,7 @@ function setSprayPattern(button) {
 
     const icons = document.getElementsByClassName("spray-disp");
     for (let i = 0; i < icons.length; i++) {
-        icons[i].src = `/assets/spray-patterns/${button.value}.png`;
+        icons[i].src = `./assets/spray-patterns/${button.value}.png`;
     }
 }
 
